@@ -1,0 +1,53 @@
+---
+title: "RMarkdown Lesson"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+library(readr)
+```
+
+# Introduction
+
+The data come from [Tweedie, 2009](https://doi.org/10.18739/A25T3FZ8X).
+
+- read in the data
+
+```{r chunk1, message=FALSE}
+bg_chem <- read_csv("data/BGchem2008data.csv")
+```
+
+
+# Analysis
+
+We are interested in nutrient concentrations over tthe whole wateer column, so we calculate the mean value of nutrients of interst  (nitrate, nitrite, ammonium, and phosphate).
+
+```{r}
+nitrate <- mean(bg_chem$NO3)
+nitrite <- mean(bg_chem$NO2)
+amm <- mean(bg_chem$NH4)
+phos <- mean(bg_chem$P)
+```
+
+
+- calculate mean redfield
+
+```{r}
+ratio <- (nitrate + nitrite + amm)/phos
+```
+
+We calculated the redfield ratio to be `r round(ratio) `
+
+- plot redfield ratio
+
+```{r, echo = FALSE}
+plot(bg_chem$P, bg_chem$NO2 + bg_chem$NO3 + bg_chem$NH4)
+```
+
+I'm not sure this makes seense...help
