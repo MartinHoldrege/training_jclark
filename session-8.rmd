@@ -1,0 +1,27 @@
+---
+title: "Session 8"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, message = FALSE}
+library(dplyr)
+library(tidyr)
+library(readr)
+```
+
+
+## Data Sources
+
+- read in the data
+
+## Clean and Reshape data
+
+- remove unnecessary columns
+- check column typing
+- reshape data
+
+## Join to Regions dataset
